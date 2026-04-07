@@ -12,7 +12,7 @@ body { display: flex; justify-content: center; align-items: center; font-family:
 
 
 .detail_container { width: 800px; height: 700px; padding: 20px; background-color: white; border-radius: 20px; box-shadow: 0px 0px 10px rgba(0, 0, 0, .5); }
-    .detail_info { width: 100%; line-height: 30px; }
+    .detail_info { width: 100%; line-height: 30px; } 
         .part { font-weight: bold; }
         .track { opacity: .5; font-size: 14px; }
 
