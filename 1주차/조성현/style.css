@@ -1,0 +1,100 @@
+/* 공통 레이아웃 */
+body {
+    background-color: #e6eaec;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 40px;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.profile_container, .info_container {
+    width: 800px;
+    background-color: #fff;
+    padding: 40px;
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+/* 상단 영역 배치 */
+.profile_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px; 
+}
+
+.profile_container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
+
+.profile_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.part_info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* 하단 정보 영역 배치 */
+.info_header { margin-bottom: 30px; }
+.info_section { margin-bottom: 30px; }
+.info_contact {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+.tech_list { padding-left: 20px; list-style: disc; }
+
+
+/* 1. 타이틀 (f-title) : 가장 강조되는 이름 등에 사용 */
+.f-title {
+    margin: 0 0 12px;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+    color: #222;
+}
+
+/* 2. 섹션 타이틀 (f-section) : 구분선이 들어간 소제목 */
+.f-section {
+    margin: 16px 0 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 6px;
+    display: inline-block;
+}
+
+/* 3. 하이라이트/포인트 (f-highlight) : 직군, 핵심 키워드 등 파란색 강조 */
+.f-highlight {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #007aff;
+}
+
+/* 4. 본문 내용 (f-body) : 일반적인 글, 서브 텍스트, 리스트 등에 사용 */
+.f-body {
+    margin: 0 0 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    font-weight: 500;
+}
