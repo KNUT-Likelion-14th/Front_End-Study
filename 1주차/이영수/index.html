@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기소개</title>
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <header class="intro-card-region" aria-label="요약 자기소개">
+            <article class="intro-card">
+                <div class="intro-card__avatar" aria-hidden="true">
+                    <img src="chaechae.jpeg" alt="채채 사진" class="intro-card__avatar-image" width="72" height="72">
+                </div>
+                <div class="intro-card__text">
+                    <p class="intro-card__name">이영수</p>
+                    <p class="intro-card__session">Frontend</p>
+                    <p class="intro-card__tagline">안녕하세요. 프론트엔드 개발자 이영수입니다.</p>
+                </div>
+            </article>
+        </header>
+        <main class="intro-detail" aria-label="상세 자기소개">
+            <article class="intro-detail-card">
+                <header class="detail-card__head">
+                    <h2 class="detail-card__title">상세 프로필</h2>
+                </header>
+                <div class="detail-card__body">
+                    <div class="detail-grid">
+                        <section class="detail-field" aria-labelledby="detail-name-label">
+                            <h3 class="detail-field__label" id="detail-name-label">이름</h3>
+                            <p class="detail-field__value">이영수</p>
+                        </section>
+                        <section class="detail-field" aria-labelledby="detail-session-label">
+                            <h3 class="detail-field__label" id="detail-session-label">세션</h3>
+                            <p class="detail-field__value">
+                                <span class="detail-badge">Frontend</span>
+                            </p>
+                        </section>
+                        <section class="detail-field detail-field--span2" aria-labelledby="detail-club-label">
+                            <h3 class="detail-field__label" id="detail-club-label">동아리명</h3>
+                            <p class="detail-field__value">멋쟁이사자처럼</p>
+                        </section>
+                    </div>
+                    <section class="detail-panel" aria-labelledby="detail-oneline-label">
+                        <p class="detail-panel__text">한국교통대학교 멋쟁이사자처럼 부회장 이영수 입니다.</p>
+                    </section>
+                    <section class="detail-field detail-field--contact" aria-labelledby="detail-contact-label">
+                        <h3 class="detail-field__label" id="detail-contact-label">연락처</h3>
+                        <div class="detail-contact">
+                            <a class="detail-contact__link" href="mailto:hello@example.com">leeys4903@naver.com</a>
+                            <span class="detail-contact__sep" aria-hidden="true">·</span>
+                            <a class="detail-contact__link" href="https://github.com/chaechae-04" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <span class="detail-contact__sep" aria-hidden="true">·</span>
+                            <a class="detail-contact__link" href="https://kmong-sample.vercel.app" target="_blank" rel="noopener noreferrer">Web Page</a>
+                        </div>
+                    </section>
+                    <section class="detail-field" aria-labelledby="detail-tech-label">
+                        <h3 class="detail-field__label" id="detail-tech-label">관심 기술</h3>
+                        <ul class="detail-tags" role="list">
+                            <li><span class="detail-tag">React</span></li>
+                            <li><span class="detail-tag">TypeScript</span></li>
+                            <li><span class="detail-tag">UI · UX</span></li>
+                            <li><span class="detail-tag">Web APIs</span></li>
+                        </ul>
+                    </section>
+                    <section class="detail-quote" aria-labelledby="detail-quote-label">
+                        <h3 class="detail-field__label" id="detail-quote-label">한 마디</h3>
+                        <blockquote class="detail-quote__body">
+                            <p>돈 많이 벌고 싶다.</p>
+                        </blockquote>
+                    </section>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+</html>
