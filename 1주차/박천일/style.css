@@ -1,0 +1,161 @@
+/* 기본 초기화 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 시스템 폰트 사용 및 페이지 배경 설정 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #08e8b8eb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 0;
+}
+
+/* 래퍼: 부모 컨테이너가 길어짐에 따라 레이아웃 정비 */
+.page-wrapper {
+    padding: 0 24px;
+    width: 100%;
+    max-width: 848px;
+    margin: auto;
+    /* 상하좌우 중앙정렬 역할 */
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* 카드 메인 컨테이너 */
+.profile-card {
+    background-color: #ecf7f7;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(255, 255, 255, 0.05) inset;
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 영역 구분: 이미지 래퍼 (정사각형 강제) */
+.profile-image-wrapper {
+    flex: 0 0 350px;
+    width: 350px;
+    height: 350px;
+    background-color: #f7fff2;
+}
+
+/* 프로필 이미지 속성 */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 콘텐츠 영역 */
+.profile-content {
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 헤더: 이름과 직무 */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-name {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000408;
+    letter-spacing: -0.02em;
+}
+
+.profile-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* 설명/자기소개 단락 */
+.profile-description {
+    font-size: 17px;
+    color: #94a3b8;
+    word-break: keep-all;
+}
+
+/* 하단 태그 영역 */
+.profile-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* 개별 스킬 태그 */
+.skill-tag {
+    background-color: #334155;
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    border: 1px solid #475569;
+}
+
+/* 상세 정보 (아래쪽 길게) */
+.detail-info {
+    width: 100%;
+    background-color: #ecf7f7;
+    /* 다크 모드 대응 */
+    border-radius: 20px;
+    padding: 40px;
+    line-height: 1.8;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(255, 255, 255, 0.05) inset;
+    color: #e2e8f0;
+}
+
+.detail-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 24px;
+    border-bottom: 5px solid #000000;
+    padding-bottom: 20px;
+}
+
+.detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 4px;
+}
+
+.info-text {
+    font-size: 16px;
+    color: #94a3b8;
+    word-break: keep-all;
+}
