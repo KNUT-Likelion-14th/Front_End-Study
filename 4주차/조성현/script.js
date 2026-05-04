@@ -100,20 +100,44 @@ let babyLions = [
     },
 ];
 
+// 초기 데이터에 createdAt 부여
+babyLions.forEach((lion, index) => {
+    lion.createdAt = Date.now() + index; // 순서 보장을 위해 index 더함
+});
+
+// 전역 매핑 객체 및 DOM 요소 캐싱
+const PART_MAP = {
+    Front: '프론트엔드',
+    Back: '백엔드',
+    Design: '디자인',
+    All: 'All'
+};
+
+const gridContainer = document.querySelector('.grid_container');
+const infoContainer = document.querySelector('.babylion_info_container');
+const countElement = document.getElementById('lion_count');
+const filterPartElement = document.getElementById('filter_part');
+const sortOrderElement = document.getElementById('sort_order');
+const searchNameElement = document.getElementById('search_name');
+
+// XSS 방지용 이스케이프 함수
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 // 화면에 아기 사자 명단을 렌더링하는 함수
 function renderLions() {
-    const gridContainer = document.querySelector('.grid_container');
-    const infoContainer = document.querySelector('.babylion_info_container');
-    const countElement = document.getElementById('lion_count');
-    
-    const filterPartRaw = document.getElementById('filter_part')?.value || 'All';
-    let filterPart = filterPartRaw;
-    if (filterPartRaw === 'Front') filterPart = '프론트엔드';
-    else if (filterPartRaw === 'Back') filterPart = '백엔드';
-    else if (filterPartRaw === 'Design') filterPart = '디자인';
+    const filterPartRaw = filterPartElement?.value || 'All';
+    const filterPart = PART_MAP[filterPartRaw] || filterPartRaw;
 
-    const sortOrder = document.getElementById('sort_order')?.value || 'latest';
-    const searchName = document.getElementById('search_name')?.value.trim().toLowerCase() || '';
+    const sortOrder = sortOrderElement?.value || 'latest';
+    const searchName = searchNameElement?.value.trim().toLowerCase() || '';
 
     let filteredLions = [...babyLions];
 
@@ -126,9 +150,9 @@ function renderLions() {
     }
 
     if (sortOrder === 'latest') {
-        filteredLions.reverse();
+        filteredLions.sort((a, b) => b.createdAt - a.createdAt);
     } else if (sortOrder === 'oldest') {
-        // 기본 배열 순서 유지
+        filteredLions.sort((a, b) => a.createdAt - b.createdAt);
     } else if (sortOrder === 'name') {
         filteredLions.sort((a, b) => a.name.localeCompare(b.name));
     }
@@ -136,6 +160,10 @@ function renderLions() {
     // 컨테이너 초기화
     gridContainer.innerHTML = '';
     infoContainer.innerHTML = '';
+
+    // DocumentFragment 생성
+    const gridFragment = document.createDocumentFragment();
+    const infoFragment = document.createDocumentFragment();
     
     // 배열 순회하며 DOM 요소 생성 및 추가
     filteredLions.forEach((lion) => {
@@ -144,35 +172,35 @@ function renderLions() {
         newBabyLionCard.classList.add('card');
         newBabyLionCard.innerHTML = `
             <div class="image_wrapper">
-                <img src=${lion.img} alt="profile">
+                <img src="${escapeHTML(lion.img || '')}" alt="profile">
                 <span class="overlay_badge">14th</span>
             </div>
 
-            <h2 class="card_name">${lion.name}</h2>
-            <p class="card_part">${lion.part}</p>
-            <p class="card_intro">${lion.comment}</p>
+            <h2 class="card_name">${escapeHTML(lion.name)}</h2>
+            <p class="card_part">${escapeHTML(lion.part)}</p>
+            <p class="card_intro">${escapeHTML(lion.comment)}</p>
         `;
-        gridContainer.appendChild(newBabyLionCard);
+        gridFragment.appendChild(newBabyLionCard);
         
         // Info Card 생성
         const newInfoCard = document.createElement('div');
         newInfoCard.classList.add('info_container');
         
-        const techArray = lion.tech ? lion.tech.split(',').map(t => t.trim()) : [];
+        const techArray = lion.tech ? lion.tech.split(',').map(t => escapeHTML(t.trim())) : [];
         const techListHTML = techArray.map(t => `<li class="f-body">${t}</li>`).join('');
         
         newInfoCard.innerHTML = `
             <div class="info_header">
-                <h2 class="f-title">${lion.name}</h2>
-                <p class="f-highlight">${lion.part}</p>
+                <h2 class="f-title">${escapeHTML(lion.name)}</h2>
+                <p class="f-highlight">${escapeHTML(lion.part)}</p>
                 <p class="f-body">멋쟁이사자처럼</p>
             </div>
             
             <div class="info_contact">
                 <ul>
-                    <li class="f-body"><strong>Email:</strong> ${lion.email}</li>
-                    <li class="f-body"><strong>Website:</strong> <a href="${lion.website}" target="_blank">${lion.website}</a></li>
-                    <li class="f-body"><strong>Phone:</strong> ${lion.phone}</li>
+                    <li class="f-body"><strong>Email:</strong> ${escapeHTML(lion.email)}</li>
+                    <li class="f-body"><strong>Website:</strong> <a href="${escapeHTML(lion.website)}" target="_blank">${escapeHTML(lion.website)}</a></li>
+                    <li class="f-body"><strong>Phone:</strong> ${escapeHTML(lion.phone)}</li>
                 </ul>
             </div>
             
@@ -183,11 +211,15 @@ function renderLions() {
             
             <div class="info_section">
                 <h3 class="f-section">자기소개</h3>
-                <p class="f-body">${lion.intro}</p>
+                <p class="f-body">${escapeHTML(lion.intro)}</p>
             </div>
         `;
-        infoContainer.appendChild(newInfoCard);
+        infoFragment.appendChild(newInfoCard);
     });
+
+    // 한 번에 DOM에 추가
+    gridContainer.appendChild(gridFragment);
+    infoContainer.appendChild(infoFragment);
     
     if (countElement) {
         countElement.innerText = `현재 아기 사자 수: ${filteredLions.length}`;
@@ -219,10 +251,8 @@ function addLion(event) {
     event.preventDefault(); // 새로고침 방지
 
     const name = document.getElementById('name').value;
-    let part = document.getElementById('part_selector').value;
-    if (part === 'Front') part = '프론트엔드';
-    else if (part === 'Back') part = '백엔드';
-    else if (part === 'Design') part = '디자인';
+    let partRaw = document.getElementById('part_selector').value;
+    let part = PART_MAP[partRaw] || partRaw;
 
     const tech = document.getElementById('tech').value;
     const intro = document.getElementById('intro').value;
@@ -245,7 +275,8 @@ function addLion(event) {
         email,
         website,
         phone,
-        comment
+        comment,
+        createdAt: Date.now()
     });
 
     renderLions();
@@ -283,10 +314,10 @@ async function lionRandomAdd(number) {
         const data = await response.json();
 
         data.results.forEach(user => {
-            const number = Math.floor(Math.random() * 3);
+            const randomRoleIndex = Math.floor(Math.random() * 3);
             let userData = {};
 
-            switch (number) {
+            switch (randomRoleIndex) {
                 case 0:
                     userData = {
                         img: user.picture.large,
@@ -327,6 +358,7 @@ async function lionRandomAdd(number) {
                     }
                     break;
             }
+            userData.createdAt = Date.now();
             babyLions.push(userData);
         });
         renderLions();
