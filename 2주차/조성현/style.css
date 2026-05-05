@@ -1,0 +1,144 @@
+body {
+    background-color: #f4f5f7;
+    font-family: 'Pretendard', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    margin: 0;
+    gap: 20px
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 386px);
+    gap: 20px;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; 
+    border: 1px solid #eef0f2;
+    display: flex;
+    flex-direction: column;
+}
+
+.image_wrapper {
+    position: relative;
+    width: 100%;
+    height: 340px; 
+}
+
+.image_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay_badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #ffffff;
+    color: #333333; 
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #cdcdcd;
+}
+
+.card_name {
+    margin: 20px 20px 4px 20px;
+    font-size: 1.25rem;
+    color: #111111;
+    font-weight: 700;
+}
+
+.card_part {
+    margin: 0 20px 10px 20px;
+    font-size: 0.9rem;
+    color: #4078ff; 
+    font-weight: 700;
+}
+
+.card_intro {
+    margin: 0 20px 24px 20px;
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.babylion_info_container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 20px;
+}
+
+.info_container {
+    width: 100%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+.info_header { margin-bottom: 30px; }
+.info_section { margin-bottom: 30px; }
+.info_contact {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+.tech_list { padding-left: 20px; list-style: disc; }
+
+
+/* 1. 타이틀 (f-title) : 가장 강조되는 이름 등에 사용 */
+.f-title {
+    margin: 0 0 12px;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+    color: #222;
+}
+
+/* 2. 섹션 타이틀 (f-section) : 구분선이 들어간 소제목 */
+.f-section {
+    margin: 16px 0 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 6px;
+    display: inline-block;
+}
+
+/* 3. 하이라이트/포인트 (f-highlight) : 직군, 핵심 키워드 등 파란색 강조 */
+.f-highlight {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #007aff;
+}
+
+/* 4. 본문 내용 (f-body) : 일반적인 글, 서브 텍스트, 리스트 등에 사용 */
+.f-body {
+    margin: 0 0 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    font-weight: 500;
+}
+
+/* 첫 번째 카드 개별 스타일 적용 (:first-child) */
+.card:first-child {
+    border: 2px solid #ffb247; /* 빨간색 테두리로 강조 */
+}
