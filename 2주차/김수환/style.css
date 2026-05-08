@@ -1,0 +1,156 @@
+/* 기본 리셋 및 전역 스타일 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    color: #333;
+    font-family: sans-serif;
+}
+
+.container.main-dashboard {
+    width: 100%;
+    max-width: 1000px; /* 여러 카드가 들어가므로 최대 너비 확장 */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+/* 카드 공통 스타일 */
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* 테두리 기본값 투명 (나중에 강조 카드를 위해) */
+    border: 2px solid transparent; 
+}
+
+/* -----------------------------------
+   [요약 카드 영역] - Grid 활용
+----------------------------------- */
+.card-grid {
+    display: grid;
+    gap: 20px;
+    /* 모바일 기본: 1열 */
+    grid-template-columns: 1fr; 
+}
+
+/* 태블릿/중간 화면: 2열 */
+@media (min-width: 600px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 데스크톱 화면: 3열 */
+@media (min-width: 900px) {
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 요약 카드 내부 스타일 */
+.summary-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* [강조 카드 규칙] 특수성(Specificity) 활용 */
+.summary-card.my-card {
+    border: 2px solid #4c6ef5;
+    box-shadow: 0 8px 20px rgba(76, 110, 245, 0.2);
+    transform: translateY(-5px); /* 살짝 떠 보이는 효과 */
+}
+
+/* -----------------------------------
+   [이미지 및 배지 위치 지정] - Position 활용
+----------------------------------- */
+.img-wrapper {
+    position: relative; /* 배지의 기준점이 됨 */
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #343a40;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.part {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4c6ef5;
+}
+
+/* -----------------------------------
+   [하단 영역 및 상세 카드]
+----------------------------------- */
+.divider {
+    border: none;
+    border-top: 2px dashed #dee2e6;
+}
+
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* 1열로 위에서 아래로 배치 */
+}
+
+.club-name {
+    color: #868e96;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.info-section {
+    margin-top: 25px;
+}
+
+.info-section h3 {
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    color: #495057;
+    border-bottom: 1px solid #f1f3f5; /* 소제목 구분을 위한 선 추가 */
+}
+
+.info-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.info-section li {
+    margin-bottom: 5px;
+}
