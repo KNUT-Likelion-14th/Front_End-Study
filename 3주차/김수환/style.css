@@ -1,0 +1,218 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    color: #333;
+    font-family: sans-serif;
+}
+
+.container.main-dashboard {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 24px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent; 
+}
+
+.card-grid { display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 600px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.summary-card { text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.summary-card.my-card {
+    border: 2px solid #4c6ef5;
+    box-shadow: 0 8px 20px rgba(76, 110, 245, 0.2);
+    transform: translateY(-5px);
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.profile-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.badge {
+    position: absolute;
+    top: 10px; 
+    right: 10px;
+    background-color: #343a40;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.part {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4c6ef5;
+}
+
+.divider {
+    border: none;
+    border-top: 2px dashed #dee2e6;
+}
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.club-name {
+    color: #868e96;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.info-section {
+    margin-top: 25px;
+}
+.info-section h3 {
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    color: #495057;
+    border-bottom: 1px solid #f1f3f5;
+}
+.info-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.info-section li {
+    margin-bottom: 5px;
+}
+
+.control-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px 24px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.status-board {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.count-badge {
+    position: static;
+    background-color: #4c6ef5;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600; 
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.primary-btn {
+    background-color: #4c6ef5;
+    color: white;
+}
+.primary-btn:hover {
+    background-color: #3b5bdb;
+}
+.danger-btn {
+    background-color: #fa5252;
+    color: white;
+}
+.danger-btn:hover {
+    background-color: #e03131;
+}
+.secondary-btn {
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+.hidden {
+    display: none !important;
+}
+.form-section {
+    border: 2px dashed #4c6ef5;
+    background-color: #f8f9fa;
+}
+.form-section h3 {
+    margin-bottom: 20px;
+    color: #343a40;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+@media (min-width: 600px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+    .full-width { grid-column: span 2; }
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+}
+.input-group input, .input-group select, .input-group textarea {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.error-msg { color: #fa5252;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+}
+.input-error {
+    border-color: #fa5252 !important;
+    background-color: #fff5f5;
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
